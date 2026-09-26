@@ -55,11 +55,6 @@ This platform is particularly useful for:
 * Beginners learning touch typing
 * Students preparing for typing tests
 * Anyone looking to improve typing speed and accuracy
-
-  ### LIVE PREVIEW 🚀
-
-  https://godeshwari.github.io/Type-Master/
-
   
 
 ### 💡 Project Highlights
