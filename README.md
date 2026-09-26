@@ -58,6 +58,8 @@ This platform is particularly useful for:
 
   ### LIVE PREVIEW 🚀
 
+  https://godeshwari.github.io/Type-Master/
+
   
 
 ### 💡 Project Highlights
