@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SSC Typing Test - Free Typing Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+            <div class="logo">
+                <div class="logo-icon">⌨</div>
+
+                <div>
+                    <h2>Type<span>Master</span></h2>
+                    <small>SSC Typing Practice</small>
+                </div>
+            </div>
+
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#tests">Typing Tests</a>
+                <a href="#instructions">Instructions</a>
+            </nav>
+
+            <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <div class="badge">
+                    🎯 SSC CHSL Preparation
+                </div>
+
+                <h1>
+                    Improve Your
+                    <span>Typing Speed</span>
+                </h1>
+
+                <p>
+                    Practice SSC CHSL typing tests with real-time
+                    speed, accuracy and error tracking.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#tests" class="primary-btn">
+                        Start Typing Test →
+                    </a>
+
+                    <a href="#instructions" class="secondary-btn">
+                        How It Works
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="keyboard-icon">
+                    ⌨️
+                </div>
+
+                <h3>SSC CHSL Typing Test</h3>
+
+                <p>English Typing Practice</p>
+
+                <div class="hero-stats">
+
+                    <div>
+                        <strong>35+</strong>
+                        <span>WPM Target</span>
+                    </div>
+
+                    <div>
+                        <strong>10</strong>
+                        <span>Minutes</span>
+                    </div>
+
+                    <div>
+                        <strong>∞</strong>
+                        <span>Practice</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TEST SECTION ================= -->
+
+    <section class="tests-section" id="tests">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    PRACTICE TESTS
+                </span>
+
+                <h2>
+                    SSC CHSL Typing Tests
+                </h2>
+
+                <p>
+                    Choose a passage and start practicing.
+                    Your typing performance will be calculated automatically.
+                </p>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="filters">
+
+                <button class="filter-btn active"
+                        onclick="filterTests('all', this)">
+                    All Tests
+                </button>
+
+                <button class="filter-btn"
+                        onclick="filterTests('easy', this)">
+                    Easy
+                </button>
+
+                <button class="filter-btn"
+                        onclick="filterTests('medium', this)">
+                    Medium
+                </button>
+
+                <button class="filter-btn"
+                        onclick="filterTests('hard', this)">
+                    Hard
+                </button>
+
+            </div>
+
+
+            <!-- TEST CARDS -->
+
+            <div class="test-grid" id="testGrid">
+
+                <!-- JavaScript creates cards here -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TYPING TEST ================= -->
+
+    <section class="typing-section hidden" id="typingSection">
+
+        <div class="container">
+
+            <div class="typing-header">
+
+                <button class="back-btn" onclick="exitTest()">
+                    ← Back to Tests
+                </button>
+
+                <div class="test-title">
+                    <span id="currentTestTitle">
+                        SSC CHSL Typing Test
+                    </span>
+                </div>
+
+                <button class="fullscreen-btn"
+                        onclick="toggleFullscreen()">
+                    ⛶ Fullscreen
+                </button>
+
+            </div>
+
+
+            <!-- TEST STATS -->
+
+            <div class="live-stats">
+
+                <div class="live-stat">
+
+                    <span>TIME</span>
+
+                    <strong id="timer">
+                        10:00
+                    </strong>
+
+                </div>
+
+
+                <div class="live-stat">
+
+                    <span>WPM</span>
+
+                    <strong id="wpm">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="live-stat">
+
+                    <span>ACCURACY</span>
+
+                    <strong id="accuracy">
+                        100%
+                    </strong>
+
+                </div>
+
+
+                <div class="live-stat">
+
+                    <span>ERRORS</span>
+
+                    <strong id="errors">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-container">
+
+                <div class="progress-bar">
+
+                    <div id="progressBar"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSAGE -->
+
+            <div class="passage-card">
+
+                <div class="passage-top">
+
+                    <span>
+                        📖 Type the following passage
+                    </span>
+
+                    <span id="characterCount">
+                        0 / 0
+                    </span>
+
+                </div>
+
+
+                <div id="passageText"
+                     class="passage-text">
+
+                </div>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="typing-input-container">
+
+                <textarea
+                    id="typingInput"
+                    placeholder="Start typing here..."
+                    spellcheck="false"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off">
+                </textarea>
+
+            </div>
+
+
+            <div class="typing-actions">
+
+                <button class="submit-btn"
+                        onclick="submitTest()">
+                    Submit Test
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= RESULT ================= -->
+
+    <section class="result-section hidden" id="resultSection">
+
+        <div class="container">
+
+            <div class="result-card">
+
+                <div class="result-icon">
+                    🎉
+                </div>
+
+                <span class="section-label">
+                    TEST COMPLETED
+                </span>
+
+                <h2>
+                    Your Typing Result
+                </h2>
+
+                <p id="resultMessage">
+                    Great job!
+                </p>
+
+
+                <div class="result-grid">
+
+                    <div class="result-item">
+
+                        <span>Typing Speed</span>
+
+                        <strong id="resultWpm">
+                            0 WPM
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <span>Accuracy</span>
+
+                        <strong id="resultAccuracy">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <span>Correct</span>
+
+                        <strong id="resultCorrect">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <span>Errors</span>
+
+                        <strong id="resultErrors">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="qualification" id="qualification">
+
+                    🎯 SSC CHSL Target: 35 WPM
+
+                </div>
+
+
+                <div class="result-buttons">
+
+                    <button class="primary-btn"
+                            onclick="restartTest()">
+                        ↻ Try Again
+                    </button>
+
+                    <button class="secondary-btn"
+                            onclick="backToTests()">
+                        Choose Another Test
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= INSTRUCTIONS ================= -->
+
+    <section class="instructions" id="instructions">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    HOW IT WORKS
+                </span>
+
+                <h2>
+                    Typing Test Instructions
+                </h2>
+
+            </div>
+
+
+            <div class="instruction-grid">
+
+                <div class="instruction-card">
+
+                    <div class="instruction-number">
+                        01
+                    </div>
+
+                    <h3>Select a Test</h3>
+
+                    <p>
+                        Choose a typing passage based on
+                        your preferred difficulty level.
+                    </p>
+
+                </div>
+
+
+                <div class="instruction-card">
+
+                    <div class="instruction-number">
+                        02
+                    </div>
+
+                    <h3>Start Typing</h3>
+
+                    <p>
+                        Type the displayed passage as accurately
+                        and quickly as possible.
+                    </p>
+
+                </div>
+
+
+                <div class="instruction-card">
+
+                    <div class="instruction-number">
+                        03
+                    </div>
+
+                    <h3>Check Your Result</h3>
+
+                    <p>
+                        View your WPM, accuracy, correct characters
+                        and errors after completing the test.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <div>
+
+                <h3>
+                    Type<span>Master</span>
+                </h3>
+
+                <p>
+                    Free typing practice for competitive exams.
+                </p>
+
+            </div>
+
+            <div>
+                <p>
+                    © 2026 TypeMaster. All rights reserved.
+                </p>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
